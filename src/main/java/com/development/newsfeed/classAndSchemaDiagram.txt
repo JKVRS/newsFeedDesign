@@ -1,0 +1,72 @@
+
+// ---------------------News Feed-----------------------------------------
+
+/*
+ *  Class Diagram
+ *  Nouns :- User, session, post, Comments
+ */
+
+
+ class User{
+     long id;
+     String name;
+     String email;
+     String password;
+    //  List<Feed> feed;  // (user : feed , 1:m)
+     Session session;
+     List<User> followingUser;
+
+ }
+class Session{
+    long id;
+    User user;
+    String token;
+
+}
+
+ class Post{
+    long id;
+   // FeedType feedtype;
+    String description;
+    int upvote;
+    int downvote;
+   List< Comments> comment;
+    Date date;
+    User createdByUser;
+ }
+//  enum FeedType{
+//     HEALTH, SPORTS, POLITCS
+//  }
+ class Comments{
+    long id;
+    User commenteByUser;
+    int  commentUpvote;
+    int commentDownvote;
+    String discriptiion;
+   List<SubComment> comment;
+
+ }
+ class SubComment{
+    long id;
+    String descrption;
+    User CreatedBy;
+
+ }
+
+
+//-------------------------------------------------------------------------------------
+
+// Schema Design
+/*
+ *  User : id,nanme,email,password,
+ *  (1:m ,user:post)
+ *  Post : id , description, upvote, downvote, date,userid
+ *  (1:m , user:comment)
+ *  (1:m, psot,comment)
+ *  Comment : id, upvote, downvote, description, userid,psotid
+ *  (1:m,commnet, subcommet)
+ *  SubComment : id, decription,commentId
+ *  Session : sessionId,userid,token,status
+ *
+ */
+
